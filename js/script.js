@@ -30,10 +30,16 @@ const app = new Vue (
                     imageUrl: 'img/05.jpg',
                     imageText: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
                 },
-            ]
+            ],
+            imageIndex: 0
         },
         methods: {
-            
+            nextImage: function() {
+                this.imageIndex ++;
+            },
+            prevImage: function() {
+                this.imageIndex --;
+            }
         }
     }
 );
