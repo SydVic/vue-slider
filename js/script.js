@@ -31,7 +31,8 @@ const app = new Vue (
                     imageText: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
                 },
             ],
-            imageIndex: 0
+            imageIndex: 0,
+            activeImage: false,
         },
         methods: {
             nextImage: function() {
@@ -47,7 +48,7 @@ const app = new Vue (
                 } else {
                     this.imageIndex --;
                 }
-            }
+            },
         }
     }
 );
