@@ -35,10 +35,18 @@ const app = new Vue (
         },
         methods: {
             nextImage: function() {
-                this.imageIndex ++;
+                if (this.imageIndex === this.sliderImages.length -1) {
+                    this.imageIndex = 0;
+                } else {
+                    this.imageIndex ++;
+                }
             },
             prevImage: function() {
-                this.imageIndex --;
+                if (this.imageIndex === 0) {
+                    this.imageIndex = this.sliderImages.length -1;
+                } else {
+                    this.imageIndex --;
+                }
             }
         }
     }
