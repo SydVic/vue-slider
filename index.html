@@ -34,9 +34,7 @@
                 class="thumb" 
                 v-for="(object, index) in sliderImages" 
                 :class="index === imageIndex ? 'active' : ''"
-                @click="clickOnThumb(index)"
-                >
-                
+                @click="clickOnThumb(index)">               
                     <img :src="object.imageUrl" :alt="object.locationName">
                 </div>
                 

@@ -51,7 +51,10 @@ const app = new Vue (
             },
             clickOnThumb: function (index) {
                 this.imageIndex = index;
-            }
+            },
+        },
+        mounted () {
+            setInterval(this.nextImage, 3000)
         }
     }
 );
