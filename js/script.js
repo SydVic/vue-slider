@@ -49,6 +49,9 @@ const app = new Vue (
                     this.imageIndex --;
                 }
             },
+            clickOnThumb: function (index) {
+                this.imageIndex = index;
+            }
         }
     }
 );
