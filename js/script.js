@@ -34,8 +34,17 @@ const app = new Vue (
             imageIndex: 0,
         },
         methods: {
-            // spoasta all'immagine successiva
-            nextImage: function() {
+            // sposta all'immagine precedente al click
+            prevImageOnClick: function() {
+                if (this.imageIndex === 0) {
+                    this.imageIndex = this.sliderImages.length -1;
+                } else {
+                    this.imageIndex --;
+                }
+                this.resetTimer();
+            },
+            // spoasta all'immagine successiva al click
+            nextImageOnClick: function() {
                 if (this.imageIndex === this.sliderImages.length -1) {
                     this.imageIndex = 0;
                 } else {
@@ -43,14 +52,13 @@ const app = new Vue (
                 }
                 this.resetTimer();
             },
-            // sposta all'immagine precedente
-            prevImage: function() {
-                if (this.imageIndex === 0) {
-                    this.imageIndex = this.sliderImages.length -1;
+            // per evitare che ogni volta che parte la timing function resetti anche il timer, il reset lo vogliamo solo al click
+            nextImage: function() {
+                if (this.imageIndex === this.sliderImages.length -1) {
+                    this.imageIndex = 0;
                 } else {
-                    this.imageIndex --;
+                    this.imageIndex ++;
                 }
-                this.resetTimer();
             },
             // al click su un'immagine nel thumbnails posiziona la classe active su quella cliccata
             clickOnThumb: function (index) {
