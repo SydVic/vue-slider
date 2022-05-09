@@ -32,29 +32,52 @@ const app = new Vue (
                 },
             ],
             imageIndex: 0,
-            activeImage: false,
         },
         methods: {
+            // spoasta all'immagine successiva
             nextImage: function() {
                 if (this.imageIndex === this.sliderImages.length -1) {
                     this.imageIndex = 0;
                 } else {
                     this.imageIndex ++;
                 }
+                this.resetTimer();
             },
+            // sposta all'immagine precedente
             prevImage: function() {
                 if (this.imageIndex === 0) {
                     this.imageIndex = this.sliderImages.length -1;
                 } else {
                     this.imageIndex --;
                 }
+                this.resetTimer();
             },
+            // al click su un'immagine nel thumbnails posiziona la classe active su quella cliccata
             clickOnThumb: function (index) {
                 this.imageIndex = index;
             },
+            // on mouse over ferma il timer dell'autoslide e lo risetta a zero per evitare salti strani
+            stopTimer: function() {
+                clearInterval(this.timer);
+                this.Timer = null;
+            },
+            // on mouse leave fa ripartire il timer dell'autoslide
+            restartTimer: function() {
+                this.timer = setInterval(this.nextImage, 3000);
+            },
+            // raggruppa stoTimer e restartTimer per applicarli a nextImage e prevImage ed evitare anche qui salti strani
+            resetTimer() {
+                this.stopTimer();
+                this.restartTimer();
+            }
         },
-        mounted () {
-            setInterval(this.nextImage, 3000)
+        created () {
+            // se fai cosi NON devi mettere le () dopo nextImage!
+            this.restartTimer();
+            // altra sintassi
+            // setInterval(() => {
+            //     this.nextImage();
+            // }, 3000);
         }
     }
 );

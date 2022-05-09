@@ -12,7 +12,9 @@
 <body>
     <div id="root">
         <div class="container">
-            <div class="items">
+            <div class="items"
+            @mouseover="stopTimer"
+            @mouseleave="restartTimer">
                     
                 <div class="item active">
                     <img 
@@ -20,7 +22,7 @@
                     :alt="sliderImages[imageIndex].locationName">
                     <div class="text">
                         <h3>{{ sliderImages[imageIndex].locationName }}</h3>
-                        <p> {{ sliderImages[imageIndex].imageText }} </p>
+                        <p>{{ sliderImages[imageIndex].imageText }}</p>
                     </div>
                 </div>
             </div>
@@ -37,8 +39,9 @@
                 @click="clickOnThumb(index)">               
                     <img :src="object.imageUrl" :alt="object.locationName">
                 </div>
-                
-                
+                <!-- aggiunta classe con object sintax -->
+                <!-- :class="{ active: index === imageIndex }" -->
+            
             </div>
         </div>
     </div>
